@@ -7,11 +7,20 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  ToastAndroid,
 } from "react-native";
 
 export default function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const login = () => {
+    if (email === "admin" && password === "Pass@123") {
+      ToastAndroid.show("logged in successfully!", ToastAndroid.SHORT);
+    } else {
+      ToastAndroid.show("Login failed, Try again!", ToastAndroid.SHORT);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -23,7 +32,7 @@ export default function App() {
           style={styles.TextInput}
           placeholder="Email."
           placeholderTextColor="#003f5c"
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={(text) => setEmail(text)}
         />
       </View>
 
@@ -33,7 +42,7 @@ export default function App() {
           placeholder="Password."
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
+          onChangeText={(text) => setPassword(text)}
         />
       </View>
 
@@ -41,7 +50,7 @@ export default function App() {
         <Text style={styles.forgot_button}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity onPress={login} style={styles.loginBtn}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
     </View>
