@@ -1,2 +1,2 @@
 # LoginLayout
-This project is android login page template 
+This project is based on android login page template using react expo
